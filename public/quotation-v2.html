@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Quotation — Marrow Butchery Phase 2</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #e8e6e1; font-family: 'Helvetica Neue', Arial, sans-serif; color: #1a1410; }
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 16px auto;
+    padding: 22mm 20mm;
+    background: #fff;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    position: relative;
+  }
+
+  /* Header */
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 2px solid #1a1410;
+    padding-bottom: 18px;
+    margin-bottom: 28px;
+  }
+  .brand {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 28px;
+    letter-spacing: 0.45em;
+    font-weight: 400;
+  }
+  .brand small {
+    display: block;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 10px;
+    color: #6b5d4f;
+    margin-top: 4px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .doc-meta {
+    text-align: right;
+    font-size: 11px;
+    line-height: 1.7;
+    color: #2a221c;
+  }
+  .doc-meta .label {
+    color: #6b5d4f;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 9.5px;
+  }
+  .doc-meta .qno {
+    font-family: 'Georgia', serif;
+    font-size: 22px;
+    margin-bottom: 4px;
+    letter-spacing: 0.04em;
+  }
+
+  h2 {
+    font-family: 'Georgia', serif;
+    font-weight: 400;
+    font-size: 18px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin: 26px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #d6cfc1;
+  }
+  h3.phase {
+    font-family: 'Georgia', serif;
+    font-weight: 400;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #6b5d4f;
+    margin: 18px 0 8px;
+  }
+
+  .addr-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 8px;
+  }
+  .addr { font-size: 11px; line-height: 1.6; }
+  .addr .label {
+    font-size: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #6b5d4f;
+    margin-bottom: 6px;
+  }
+  .addr strong { font-size: 13px; font-weight: 600; }
+
+  .intro {
+    font-size: 12px;
+    color: #2a221c;
+    line-height: 1.6;
+    margin-bottom: 8px;
+  }
+  .intro + .intro { margin-top: 10px; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+  }
+  thead th {
+    text-align: left;
+    background: #1a1410;
+    color: #fff;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 10px 10px;
+  }
+  thead th:last-child, tbody td:last-child { text-align: right; }
+  thead th:nth-child(3), tbody td:nth-child(3) { text-align: center; width: 60px; }
+  thead th:first-child, tbody td:first-child { width: 32px; text-align: center; }
+  tbody td {
+    padding: 11px 10px;
+    border-bottom: 1px solid #ede7da;
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  tbody tr:nth-child(even) td { background: #faf7f1; }
+  tbody tr.section-row td {
+    background: #1a1410 !important;
+    color: #fff;
+    font-family: 'Georgia', serif;
+    font-size: 10.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 8px 10px;
+    text-align: left !important;
+  }
+  td .item-title { font-weight: 600; display: block; margin-bottom: 2px; }
+  td .item-desc { color: #6b5d4f; font-size: 10.5px; }
+  td.amt { font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+  .totals {
+    margin-top: 18px;
+    margin-left: auto;
+    width: 300px;
+    font-size: 11.5px;
+  }
+  .totals .row {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 4px;
+  }
+  .totals .row.total {
+    border-top: 2px solid #1a1410;
+    margin-top: 6px;
+    padding-top: 12px;
+    font-family: 'Georgia', serif;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+  }
+  .totals .label { color: #6b5d4f; }
+
+  .summary {
+    background: #faf7f1;
+    border-left: 3px solid #1a1410;
+    padding: 14px 16px;
+    margin: 14px 0;
+    font-size: 11px;
+    line-height: 1.7;
+    color: #2a221c;
+  }
+  .summary strong {
+    font-family: 'Georgia', serif;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+  }
+
+  .terms {
+    margin-top: 28px;
+    font-size: 10.5px;
+    line-height: 1.7;
+    color: #2a221c;
+  }
+  .terms ul { padding-left: 16px; }
+  .terms li { margin-bottom: 4px; }
+
+  .signoff {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 36px;
+    font-size: 11px;
+  }
+  .signoff .box {
+    border-top: 1px solid #1a1410;
+    padding-top: 8px;
+    color: #6b5d4f;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 9.5px;
+  }
+
+  .foot {
+    margin-top: 40px;
+    padding-top: 10px;
+    border-top: 1px solid #d6cfc1;
+    font-size: 9.5px;
+    color: #6b5d4f;
+    text-align: center;
+    letter-spacing: 0.05em;
+  }
+
+  @media print {
+    html, body { background: #fff; }
+    .page { box-shadow: none; margin: 0; }
+    .no-print { display: none; }
+  }
+  .print-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 22px;
+    background: #1a1410;
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="top">
+    <div class="brand">
+      M A R R O W
+      <small>Butchery Website &middot; Phase 2 Quotation</small>
+    </div>
+    <div class="doc-meta">
+      <div class="qno">Q-2026-003</div>
+      <div><span class="label">Issued</span> &nbsp; 21 May 2026</div>
+      <div><span class="label">Valid Until</span> &nbsp; 20 Jun 2026</div>
+      <div><span class="label">Supersedes</span> &nbsp; &mdash;</div>
+      <div><span class="label">Follows</span> &nbsp; Q-2026-002</div>
+    </div>
+  </div>
+
+  <!-- FROM / TO -->
+  <div class="addr-grid">
+    <div class="addr">
+      <div class="label">From</div>
+      <strong>Rancorous Studio</strong><br />
+      Independent Web Designer &amp; Developer<br />
+      sameer1punk@gmail.com
+    </div>
+    <div class="addr">
+      <div class="label">Prepared For</div>
+      <strong>Marrow Butchery</strong><br />
+      Hand-selected cuts, dry-aged with care<br />
+      Project: Multi-page expansion + Next.js migration
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <h2>Project Summary</h2>
+  <p class="intro">
+    Phase 2 expands the original single-page brand site (delivered under Q-2026-002)
+    into a full multi-page experience and migrates the codebase from hand-written
+    HTML into a production Next.js application deployed on Vercel.
+  </p>
+  <p class="intro">
+    Five new editorial pages were written, designed and built (Our Craft, Selection,
+    Dry-Aging, Wholesale, Visit Us). A complete product-detail system was added
+    covering twelve hand-selected cuts across Beef, Pork, Lamb, Poultry and
+    Charcuterie, each with its own image gallery, specifications, copy and related
+    items rail. A comprehensive responsive overhaul brings full support for
+    every modern device &mdash; iMac, MacBook, iPad portrait &amp; landscape, iPhone,
+    iPhone SE, Android phones &mdash; with iOS safe-area awareness and touch-device
+    optimisations.
+  </p>
+
+  <div class="summary">
+    <strong>Delivered &amp; live on Vercel.</strong> Source code is published to
+    GitHub at <em>github.com/ArchonWellMade/Marrow</em> and auto-deploys on every
+    push to <em>main</em>. Twenty-four routes are statically pre-rendered at
+    build time; first-load JS is ~102 kB on every page.
+  </div>
+
+  <!-- LINE ITEMS -->
+  <h2>Scope &amp; Deliverables</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Deliverable</th>
+        <th>Hrs</th>
+        <th>Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr class="section-row"><td colspan="4">Phase A &middot; Content &amp; catalog expansion</td></tr>
+
+      <tr>
+        <td>01</td>
+        <td>
+          <span class="item-title">Multi-page information architecture</span>
+          <span class="item-desc">Routing scheme, breadcrumb system, cross-page navigation, link map.</span>
+        </td>
+        <td>2.5</td>
+        <td class="amt">$80</td>
+      </tr>
+      <tr>
+        <td>02</td>
+        <td>
+          <span class="item-title">Our Craft page</span>
+          <span class="item-desc">Editorial provenance page with hero, split image-text blocks, three-up feature row, head butcher quote.</span>
+        </td>
+        <td>3.0</td>
+        <td class="amt">$100</td>
+      </tr>
+      <tr>
+        <td>03</td>
+        <td>
+          <span class="item-title">Selection page (full catalog)</span>
+          <span class="item-desc">Dedicated catalog page reusing the home grid with URL-driven category deep-links.</span>
+        </td>
+        <td>2.0</td>
+        <td class="amt">$65</td>
+      </tr>
+      <tr>
+        <td>04</td>
+        <td>
+          <span class="item-title">Dry-Aging page</span>
+          <span class="item-desc">Three-tier ageing programme (28 / 45 / 90 days), conditions block, "reserve a hook" CTA.</span>
+        </td>
+        <td>2.5</td>
+        <td class="amt">$80</td>
+      </tr>
+      <tr>
+        <td>05</td>
+        <td>
+          <span class="item-title">Wholesale page (with trade enquiry form)</span>
+          <span class="item-desc">Trade pitch, three feature pillars, contact form with restaurant / chef fields, success state.</span>
+        </td>
+        <td>3.5</td>
+        <td class="amt">$115</td>
+      </tr>
+      <tr>
+        <td>06</td>
+        <td>
+          <span class="item-title">Visit Us page (with map &amp; contact form)</span>
+          <span class="item-desc">Address blocks, opening hours, embedded OpenStreetMap, general contact form.</span>
+        </td>
+        <td>3.5</td>
+        <td class="amt">$115</td>
+      </tr>
+      <tr>
+        <td>07</td>
+        <td>
+          <span class="item-title">Product detail page system</span>
+          <span class="item-desc">Single reusable template covering gallery + thumb-swap, specs table, quantity stepper, related rail.</span>
+        </td>
+        <td>4.0</td>
+        <td class="amt">$130</td>
+      </tr>
+      <tr>
+        <td>08</td>
+        <td>
+          <span class="item-title">Twelve individual product pages</span>
+          <span class="item-desc">Wagyu Reserve, Dry-Aged Ribeye, Tomahawk, Wagyu Brisket, Heritage Berkshire, Iberico Bellota, Slow-Cured Belly, Spring Lamb, Lamb Shoulder, Free-Range Bird, Duck Breast, The Board.</span>
+        </td>
+        <td>6.0</td>
+        <td class="amt">$190</td>
+      </tr>
+      <tr>
+        <td>09</td>
+        <td>
+          <span class="item-title">Product copy &amp; voice</span>
+          <span class="item-desc">Two-paragraph editorial descriptions plus origin / breed / cut / cook specs written by hand for each of the twelve cuts.</span>
+        </td>
+        <td>3.0</td>
+        <td class="amt">$100</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td>
+          <span class="item-title">Brand voice for new pages</span>
+          <span class="item-desc">All headlines, eyebrows, paragraphs and microcopy written from scratch for the five new editorial pages.</span>
+        </td>
+        <td>2.0</td>
+        <td class="amt">$65</td>
+      </tr>
+      <tr>
+        <td>11</td>
+        <td>
+          <span class="item-title">Design system extension</span>
+          <span class="item-desc">New CSS modules for page-hero, prose, split, feature-row, product layout, related rail, contact, specs.</span>
+        </td>
+        <td>2.5</td>
+        <td class="amt">$80</td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>
+          <span class="item-title">Image curation &amp; sourcing</span>
+          <span class="item-desc">Hand-picked photography across all new pages and product cards, sized and optimised.</span>
+        </td>
+        <td>1.5</td>
+        <td class="amt">$50</td>
+      </tr>
+
+      <tr class="section-row"><td colspan="4">Phase B &middot; Next.js migration &amp; deployment</td></tr>
+
+      <tr>
+        <td>13</td>
+        <td>
+          <span class="item-title">Next.js 15 / React 19 scaffolding</span>
+          <span class="item-desc">App Router setup, package configuration, jsconfig path aliases, next.config remote-image patterns.</span>
+        </td>
+        <td>2.0</td>
+        <td class="amt">$65</td>
+      </tr>
+      <tr>
+        <td>14</td>
+        <td>
+          <span class="item-title">Shared component library</span>
+          <span class="item-desc">Chrome (header + drawer), Footer, Newsletter, HeroSlider, SelectionGrid, ProductGallery, QuantityAndBuy, ContactForm, ImageFallback, Reveal.</span>
+        </td>
+        <td>4.5</td>
+        <td class="amt">$145</td>
+      </tr>
+      <tr>
+        <td>15</td>
+        <td>
+          <span class="item-title">Centralised product data layer</span>
+          <span class="item-desc">Single lib/products.js module exporting structured product records, CATEGORIES, and lookup helpers used by every page.</span>
+        </td>
+        <td>2.0</td>
+        <td class="amt">$65</td>
+      </tr>
+      <tr>
+        <td>16</td>
+        <td>
+          <span class="item-title">Dynamic /products/[slug] route</span>
+          <span class="item-desc">Single dynamic route generates all twelve product pages at build time via generateStaticParams.</span>
+        </td>
+        <td>2.0</td>
+        <td class="amt">$65</td>
+      </tr>
+      <tr>
+        <td>17</td>
+        <td>
+          <span class="item-title">URL-driven category filters</span>
+          <span class="item-desc">/selection?cat=beef &amp; co. honoured by both grid and footer links via useSearchParams.</span>
+        </td>
+        <td>1.0</td>
+        <td class="amt">$35</td>
+      </tr>
+      <tr>
+        <td>18</td>
+        <td>
+          <span class="item-title">Hero carousel rebuild in React</span>
+          <span class="item-desc">Four-slide cross-fade, slow-zoom Ken-Burns, dot navigation, autoplay on 5-second interval, ported to client component.</span>
+        </td>
+        <td>1.5</td>
+        <td class="amt">$50</td>
+      </tr>
+      <tr>
+        <td>19</td>
+        <td>
+          <span class="item-title">Image-failure fallback handler (global)</span>
+          <span class="item-desc">Root-level useEffect that swaps any broken &lt;img&gt; to a verified fallback so the site never shows missing placeholders.</span>
+        </td>
+        <td>1.0</td>
+        <td class="amt">$40</td>
+      </tr>
+      <tr>
+        <td>20</td>
+        <td>
+          <span class="item-title">GitHub repository setup</span>
+          <span class="item-desc">git init, .gitignore tuned for Next.js + Windows, README with deploy guide, initial commit, remote push.</span>
+        </td>
+        <td>0.5</td>
+        <td class="amt">$20</td>
+      </tr>
+      <tr>
+        <td>21</td>
+        <td>
+          <span class="item-title">Vercel deployment</span>
+          <span class="item-desc">Project configuration, auto-deploy on push to main, preview URLs on pull requests.</span>
+        </td>
+        <td>0.5</td>
+        <td class="amt">$20</td>
+      </tr>
+
+      <tr class="section-row"><td colspan="4">Phase C &middot; Polish &amp; full-device responsive</td></tr>
+
+      <tr>
+        <td>22</td>
+        <td>
+          <span class="item-title">Scroll-reveal animations</span>
+          <span class="item-desc">IntersectionObserver-driven fade-up for editorial sections; honours prefers-reduced-motion.</span>
+        </td>
+        <td>1.0</td>
+        <td class="amt">$40</td>
+      </tr>
+      <tr>
+        <td>23</td>
+        <td>
+          <span class="item-title">Tablet-portrait breakpoint</span>
+          <span class="item-desc">Dedicated 900px breakpoint between desktop and phone, tuned for iPad portrait and large phones in landscape.</span>
+        </td>
+        <td>1.5</td>
+        <td class="amt">$50</td>
+      </tr>
+      <tr>
+        <td>24</td>
+        <td>
+          <span class="item-title">Phone-specific UX</span>
+          <span class="item-desc">Horizontally-scrollable filter chips, stacked newsletter form, repadded hero / story / product / footer.</span>
+        </td>
+        <td>1.5</td>
+        <td class="amt">$50</td>
+      </tr>
+      <tr>
+        <td>25</td>
+        <td>
+          <span class="item-title">Tiny-phone breakpoint</span>
+          <span class="item-desc">Dedicated 380px breakpoint for iPhone SE, iPhone 12 mini and older Android.</span>
+        </td>
+        <td>1.0</td>
+        <td class="amt">$40</td>
+      </tr>
+      <tr>
+        <td>26</td>
+        <td>
+          <span class="item-title">iOS &amp; iPhone-specific support</span>
+          <span class="item-desc">100dvh dynamic viewport for the URL-bar issue, env(safe-area-inset-*) on header / footer / drawer for notch &amp; home bar.</span>
+        </td>
+        <td>1.5</td>
+        <td class="amt">$50</td>
+      </tr>
+      <tr>
+        <td>27</td>
+        <td>
+          <span class="item-title">Touch-device optimisations</span>
+          <span class="item-desc">@media (hover: none) gating to prevent stuck hover states, 44 / 48px touch targets on buttons and the qty stepper.</span>
+        </td>
+        <td>1.0</td>
+        <td class="amt">$40</td>
+      </tr>
+      <tr>
+        <td>28</td>
+        <td>
+          <span class="item-title">Landscape-phone &amp; ultrawide support</span>
+          <span class="item-desc">Short-and-wide phone orientation handled; iMac / external-display breakpoint widens padding past 1600px.</span>
+        </td>
+        <td>0.5</td>
+        <td class="amt">$20</td>
+      </tr>
+      <tr>
+        <td>29</td>
+        <td>
+          <span class="item-title">Catalog revisions</span>
+          <span class="item-desc">Removed three seafood lines (Atlantic Salmon, Yellowfin Tuna, Fresh Oysters), patched cross-references, repointed footer links.</span>
+        </td>
+        <td>0.5</td>
+        <td class="amt">$20</td>
+      </tr>
+      <tr>
+        <td>30</td>
+        <td>
+          <span class="item-title">QA &amp; cross-browser testing</span>
+          <span class="item-desc">Build verification, route smoke tests, dev / production parity checks, regression fixes.</span>
+        </td>
+        <td>2.0</td>
+        <td class="amt">$65</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- TOTALS -->
+  <div class="totals">
+    <div class="row"><span class="label">Phase A subtotal</span><span>$1,170</span></div>
+    <div class="row"><span class="label">Phase B subtotal</span><span>$440</span></div>
+    <div class="row"><span class="label">Phase C subtotal</span><span>$325</span></div>
+    <div class="row"><span class="label">Subtotal</span><span>$1,935</span></div>
+    <div class="row"><span class="label">Returning-client discount</span><span>&minus;$135</span></div>
+    <div class="row"><span class="label">Tax / GST</span><span>$0.00</span></div>
+    <div class="row total"><span>Total</span><span>$1,800 AUD</span></div>
+  </div>
+
+  <!-- TERMS -->
+  <h2>Terms &amp; Conditions</h2>
+  <div class="terms">
+    <ul>
+      <li><strong>Payment schedule:</strong> 50% on acceptance, 50% on final delivery (site is already delivered &amp; live).</li>
+      <li><strong>Currency:</strong> All amounts quoted in AUD.</li>
+      <li><strong>Revisions:</strong> Two rounds of revisions included per deliverable; further changes quoted separately at $35 / hour.</li>
+      <li><strong>Timeline:</strong> Work complete. Repository published to GitHub; live on Vercel.</li>
+      <li><strong>Exclusions:</strong> Domain &amp; DNS, ongoing hosting fees (Vercel free tier currently covers usage), paid stock photography or licensing, future feature additions.</li>
+      <li><strong>Ownership:</strong> Source files &amp; GitHub repository transferred on final payment. Designer retains right to display work in portfolio.</li>
+      <li><strong>Validity:</strong> This quotation is valid for 30 days from the date of issue.</li>
+    </ul>
+  </div>
+
+  <!-- SIGN OFF -->
+  <div class="signoff">
+    <div class="box">Authorised by &mdash; Rancorous Studio</div>
+    <div class="box">Accepted by &mdash; Client signature</div>
+  </div>
+
+  <div class="foot">
+    Thank you for the continued collaboration &middot; Quotation Q-2026-003 &middot; Rancorous Studio &middot; sameer1punk@gmail.com
+  </div>
+
+</div>
+
+<button class="print-btn no-print" onclick="window.print()">Download PDF</button>
+
+</body>
+</html>
