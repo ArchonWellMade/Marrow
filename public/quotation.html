@@ -90,9 +90,10 @@
   .intro {
     font-size: 12px;
     color: #2a221c;
-    line-height: 1.55;
+    line-height: 1.6;
     margin-bottom: 8px;
   }
+  .intro + .intro { margin-top: 10px; }
 
   table {
     width: 100%;
@@ -126,7 +127,7 @@
   .totals {
     margin-top: 18px;
     margin-left: auto;
-    width: 280px;
+    width: 300px;
     font-size: 11.5px;
   }
   .totals .row {
@@ -145,8 +146,20 @@
   }
   .totals .label { color: #6b5d4f; }
 
-  .addons table { margin-top: 6px; }
-  .addons thead th { background: #6b5d4f; }
+  .summary {
+    background: #faf7f1;
+    border-left: 3px solid #1a1410;
+    padding: 14px 16px;
+    margin: 14px 0;
+    font-size: 11px;
+    line-height: 1.7;
+    color: #2a221c;
+  }
+  .summary strong {
+    font-family: 'Georgia', serif;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+  }
 
   .terms {
     margin-top: 28px;
@@ -218,7 +231,7 @@
     <div class="doc-meta">
       <div class="qno">Q-2026-002</div>
       <div><span class="label">Issued</span> &nbsp; 21 May 2026</div>
-      <div><span class="label">Valid Until</span> &nbsp; 19 Jun 2026</div>
+      <div><span class="label">Valid Until</span> &nbsp; 20 Jun 2026</div>
     </div>
   </div>
 
@@ -234,19 +247,36 @@
       <div class="label">Prepared For</div>
       <strong>Marrow Butchery</strong><br />
       Hand-selected cuts, dry-aged with care<br />
-      Project: Brand Landing Site
+      Project: Brand Website &mdash; full build &amp; deployment
     </div>
   </div>
 
   <!-- INTRO -->
   <h2>Project Summary</h2>
   <p class="intro">
-    A bespoke, single-page brand website for Marrow Butchery — a premium butcher and charcuterie
-    house. The site features a hero image slider, slim left-side navigation drawer, brand story,
-    a filterable product selection grid (15 cuts across Beef / Pork / Lamb / Poultry / Seafood /
-    Charcuterie), newsletter capture and a multi-column footer. Hand-coded in HTML, CSS and
-    vanilla JavaScript with full responsive support and image-failure fallback handling.
+    A bespoke, multi-page brand website for Marrow Butchery &mdash; a premium butcher
+    and charcuterie house. The site features a hero image slider, slim left-side
+    navigation drawer, brand story, a filterable product selection grid covering
+    twelve hand-selected cuts across Beef / Pork / Lamb / Poultry / Charcuterie,
+    five editorial information pages (Our Craft, Selection, Dry-Aging, Wholesale,
+    Visit Us), individual product detail pages with image gallery, specifications
+    and related items, plus newsletter capture, multi-column footer and full
+    contact / trade-enquiry forms.
   </p>
+  <p class="intro">
+    Built on Next.js 15 (App Router) with React 19. Twenty-four routes are
+    statically pre-rendered at build time. Comprehensive responsive support
+    covers every modern device &mdash; iMac, MacBook, iPad portrait &amp; landscape,
+    iPhone, iPhone SE, Android phones &mdash; with iOS safe-area awareness, touch
+    optimisations, and graceful image-failure fallback. Source is published to
+    GitHub and auto-deploys to Vercel on every push.
+  </p>
+
+  <div class="summary">
+    <strong>Delivered &amp; live.</strong> Repository at
+    <em>github.com/ArchonWellMade/Marrow</em>; deployed on Vercel; auto-redeploys
+    on every push to <em>main</em>; first-load JavaScript ~102 kB on every page.
+  </div>
 
   <!-- LINE ITEMS -->
   <h2>Scope &amp; Deliverables</h2>
@@ -264,7 +294,7 @@
         <td>01</td>
         <td>
           <span class="item-title">Design system &amp; layout foundation</span>
-          <span class="item-desc">Serif + sans typography pairing, cream colour palette, CSS variables, responsive grid framework.</span>
+          <span class="item-desc">Serif + sans typography pairing, cream colour palette, CSS variables, responsive grid framework, design tokens.</span>
         </td>
         <td>4.0</td>
         <td class="amt">$130</td>
@@ -282,7 +312,7 @@
         <td>03</td>
         <td>
           <span class="item-title">Side navigation drawer</span>
-          <span class="item-desc">Slim left-side panel with nav links, social icons, smooth slide-in transition.</span>
+          <span class="item-desc">Slim left-side panel with nav links, social icons, smooth slide-in transition, escape-to-close, focus management.</span>
         </td>
         <td>3.0</td>
         <td class="amt">$100</td>
@@ -291,7 +321,7 @@
         <td>04</td>
         <td>
           <span class="item-title">Hero fade slider</span>
-          <span class="item-desc">4 cross-dissolving butcher images, autoplay, Ken-Burns slow zoom, dot navigation.</span>
+          <span class="item-desc">4 cross-dissolving butcher images, autoplay, Ken-Burns slow zoom, dot navigation, autopause on hover.</span>
         </td>
         <td>4.0</td>
         <td class="amt">$130</td>
@@ -309,7 +339,7 @@
         <td>06</td>
         <td>
           <span class="item-title">Product selection grid</span>
-          <span class="item-desc">15 cuts &amp; products, mixed wide/square layout (4-col dense flow), hover transitions, 6 category filters.</span>
+          <span class="item-desc">Twelve cuts, mixed wide/square layout (4-col dense flow), hover transitions, five category filters with URL deep-links.</span>
         </td>
         <td>6.0</td>
         <td class="amt">$200</td>
@@ -318,7 +348,7 @@
         <td>07</td>
         <td>
           <span class="item-title">Newsletter signup</span>
-          <span class="item-desc">"From the Block" subscribe form with validation and success state.</span>
+          <span class="item-desc">"From the Block" subscribe form with validation, success state, mobile-stacked variant.</span>
         </td>
         <td>1.5</td>
         <td class="amt">$50</td>
@@ -335,90 +365,222 @@
       <tr>
         <td>09</td>
         <td>
-          <span class="item-title">Brand voice &amp; copywriting</span>
-          <span class="item-desc">All product names, taglines, story paragraphs, nav labels and microcopy written from scratch for Marrow.</span>
+          <span class="item-title">Multi-page information architecture</span>
+          <span class="item-desc">Routing scheme, breadcrumb system, cross-page navigation, link map.</span>
+        </td>
+        <td>2.5</td>
+        <td class="amt">$80</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td>
+          <span class="item-title">Our Craft page</span>
+          <span class="item-desc">Editorial provenance page with hero, split image-text blocks, three-up feature row, head butcher quote.</span>
         </td>
         <td>3.0</td>
         <td class="amt">$100</td>
       </tr>
       <tr>
-        <td>10</td>
-        <td>
-          <span class="item-title">Image curation &amp; sourcing</span>
-          <span class="item-desc">Hand-picked stock photography across hero + 15 product cards, sized and optimised.</span>
-        </td>
-        <td>2.0</td>
-        <td class="amt">$60</td>
-      </tr>
-      <tr>
         <td>11</td>
         <td>
-          <span class="item-title">Image-failure fallback handling</span>
-          <span class="item-desc">JavaScript onerror handler that auto-swaps broken images to a verified backup so the site never shows broken placeholders.</span>
+          <span class="item-title">Selection page (full catalog)</span>
+          <span class="item-desc">Dedicated catalog page reusing the home grid with URL-driven category deep-links.</span>
+        </td>
+        <td>2.0</td>
+        <td class="amt">$65</td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>
+          <span class="item-title">Dry-Aging page</span>
+          <span class="item-desc">Three-tier ageing programme (28 / 45 / 90 days), conditions block, "reserve a hook" CTA.</span>
+        </td>
+        <td>2.5</td>
+        <td class="amt">$80</td>
+      </tr>
+      <tr>
+        <td>13</td>
+        <td>
+          <span class="item-title">Wholesale page (with trade enquiry form)</span>
+          <span class="item-desc">Trade pitch, three feature pillars, contact form with restaurant / chef fields, success state.</span>
+        </td>
+        <td>3.5</td>
+        <td class="amt">$115</td>
+      </tr>
+      <tr>
+        <td>14</td>
+        <td>
+          <span class="item-title">Visit Us page (with map &amp; contact form)</span>
+          <span class="item-desc">Address blocks, opening hours, embedded OpenStreetMap, general contact form.</span>
+        </td>
+        <td>3.5</td>
+        <td class="amt">$115</td>
+      </tr>
+      <tr>
+        <td>15</td>
+        <td>
+          <span class="item-title">Product detail page system</span>
+          <span class="item-desc">Single reusable template covering gallery + thumb-swap, specs table, quantity stepper, related products rail.</span>
+        </td>
+        <td>4.0</td>
+        <td class="amt">$130</td>
+      </tr>
+      <tr>
+        <td>16</td>
+        <td>
+          <span class="item-title">Twelve individual product pages</span>
+          <span class="item-desc">Wagyu Reserve, Dry-Aged Ribeye, Tomahawk, Wagyu Brisket, Heritage Berkshire, Iberico Bellota, Slow-Cured Belly, Spring Lamb, Lamb Shoulder, Free-Range Bird, Duck Breast, The Board.</span>
+        </td>
+        <td>6.0</td>
+        <td class="amt">$190</td>
+      </tr>
+      <tr>
+        <td>17</td>
+        <td>
+          <span class="item-title">Brand voice &amp; copywriting</span>
+          <span class="item-desc">All product names, taglines, story paragraphs, headlines, eyebrows, product descriptions, microcopy written from scratch.</span>
+        </td>
+        <td>5.0</td>
+        <td class="amt">$160</td>
+      </tr>
+      <tr>
+        <td>18</td>
+        <td>
+          <span class="item-title">Image curation &amp; sourcing</span>
+          <span class="item-desc">Hand-picked stock photography across hero, twelve product cards, five page heroes; sized and optimised.</span>
+        </td>
+        <td>3.0</td>
+        <td class="amt">$100</td>
+      </tr>
+      <tr>
+        <td>19</td>
+        <td>
+          <span class="item-title">Next.js 15 / React 19 architecture</span>
+          <span class="item-desc">App Router scaffolding, package configuration, jsconfig path aliases, next.config remote-image patterns.</span>
+        </td>
+        <td>2.5</td>
+        <td class="amt">$80</td>
+      </tr>
+      <tr>
+        <td>20</td>
+        <td>
+          <span class="item-title">Shared React component library</span>
+          <span class="item-desc">Chrome (header + drawer), Footer, Newsletter, HeroSlider, SelectionGrid, ProductGallery, QuantityAndBuy, ContactForm, ImageFallback, Reveal.</span>
+        </td>
+        <td>5.0</td>
+        <td class="amt">$160</td>
+      </tr>
+      <tr>
+        <td>21</td>
+        <td>
+          <span class="item-title">Dynamic /products/[slug] route</span>
+          <span class="item-desc">Single dynamic route generates all twelve product pages at build time via generateStaticParams.</span>
+        </td>
+        <td>2.5</td>
+        <td class="amt">$80</td>
+      </tr>
+      <tr>
+        <td>22</td>
+        <td>
+          <span class="item-title">Centralised product data layer</span>
+          <span class="item-desc">Single lib/products.js module exporting structured product records, CATEGORIES, and lookup helpers used by every page.</span>
+        </td>
+        <td>2.0</td>
+        <td class="amt">$65</td>
+      </tr>
+      <tr>
+        <td>23</td>
+        <td>
+          <span class="item-title">URL-driven category filters</span>
+          <span class="item-desc">/selection?cat=beef and equivalents honoured by both grid and footer links via useSearchParams.</span>
+        </td>
+        <td>1.0</td>
+        <td class="amt">$35</td>
+      </tr>
+      <tr>
+        <td>24</td>
+        <td>
+          <span class="item-title">Image-failure fallback handler (global)</span>
+          <span class="item-desc">Root-level handler that swaps any broken &lt;img&gt; to a verified backup so the site never shows missing placeholders.</span>
         </td>
         <td>1.0</td>
         <td class="amt">$40</td>
       </tr>
       <tr>
-        <td>12</td>
+        <td>25</td>
         <td>
-          <span class="item-title">Responsive breakpoints &amp; QA</span>
-          <span class="item-desc">Mobile, tablet, desktop and ultrawide layouts. Cross-browser checks.</span>
+          <span class="item-title">Scroll-reveal animations</span>
+          <span class="item-desc">IntersectionObserver-driven fade-up for editorial sections; honours prefers-reduced-motion.</span>
+        </td>
+        <td>1.0</td>
+        <td class="amt">$40</td>
+      </tr>
+      <tr>
+        <td>26</td>
+        <td>
+          <span class="item-title">Full-device responsive system</span>
+          <span class="item-desc">Breakpoints for ultrawide, laptop, iPad portrait, phone and iPhone SE. iOS dvh viewport units, env(safe-area-inset-*) for the iPhone notch &amp; home bar, landscape-phone handling.</span>
+        </td>
+        <td>3.5</td>
+        <td class="amt">$115</td>
+      </tr>
+      <tr>
+        <td>27</td>
+        <td>
+          <span class="item-title">Touch-device optimisations</span>
+          <span class="item-desc">@media (hover: none) gating to prevent stuck hover states, 44 / 48px touch targets, horizontal-scroll filter chips, stacked mobile newsletter form.</span>
+        </td>
+        <td>1.5</td>
+        <td class="amt">$50</td>
+      </tr>
+      <tr>
+        <td>28</td>
+        <td>
+          <span class="item-title">Revisions &amp; polish</span>
+          <span class="item-desc">Slider sizing, drawer behaviour, grid rhythm, label scale, typography tuning, multiple client review rounds.</span>
+        </td>
+        <td>3.5</td>
+        <td class="amt">$115</td>
+      </tr>
+      <tr>
+        <td>29</td>
+        <td>
+          <span class="item-title">QA &amp; cross-browser testing</span>
+          <span class="item-desc">Build verification, route smoke tests, dev / production parity checks, regression fixes, device-emulator passes.</span>
         </td>
         <td>3.0</td>
         <td class="amt">$90</td>
       </tr>
       <tr>
-        <td>13</td>
+        <td>30</td>
         <td>
-          <span class="item-title">Revisions &amp; polish</span>
-          <span class="item-desc">Slider sizing, drawer behaviour, grid rhythm, label scale, multiple client review rounds.</span>
+          <span class="item-title">GitHub setup &amp; Vercel deployment</span>
+          <span class="item-desc">Repository initialisation, .gitignore tuned for Next.js + Windows, README with deploy guide, auto-deploy on push, preview URLs on PRs.</span>
         </td>
-        <td>3.5</td>
-        <td class="amt">$100</td>
+        <td>1.5</td>
+        <td class="amt">$60</td>
       </tr>
     </tbody>
   </table>
 
   <!-- TOTALS -->
   <div class="totals">
-    <div class="row"><span class="label">Subtotal</span><span>$1,200.00</span></div>
-    <div class="row"><span class="label">Discount</span><span>$0.00</span></div>
+    <div class="row"><span class="label">Subtotal</span><span>$2,875</span></div>
+    <div class="row"><span class="label">Discount</span><span>&minus;$75</span></div>
     <div class="row"><span class="label">Tax / GST</span><span>$0.00</span></div>
-    <div class="row total"><span>Total</span><span>$1,200 AUD</span></div>
-  </div>
-
-  <!-- ADD-ONS -->
-  <div class="addons">
-    <h2>Optional Add-ons</h2>
-    <table>
-      <thead>
-        <tr><th>#</th><th>Item</th><th>Hrs</th><th>Amount</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>A1</td><td>Individual product detail page <span class="item-desc">(per cut)</span></td><td>3.0</td><td class="amt">$70</td></tr>
-        <tr><td>A2</td><td>E-commerce / online ordering (Shopify or custom)</td><td>20–40</td><td class="amt">$750 </td></tr>
-        <tr><td>A3</td><td>CMS integration (Webflow / WordPress / Sanity)</td><td>10–20</td><td class="amt">$350 – $750</td></tr>
-        <tr><td>A4</td><td>Click-and-collect / delivery booking module</td><td>8–14</td><td class="amt">$270 – $510</td></tr>
-        <tr><td>A5</td><td>SEO setup, meta tags &amp; Open Graph</td><td>3.5</td><td class="amt">$90</td></tr>
-        <tr><td>A6</td><td>Performance &amp; Lighthouse optimisation</td><td>4.0</td><td class="amt">$110</td></tr>
-        <tr><td>A7</td><td>Hosting &amp; deployment (Netlify / Vercel)</td><td>1.5</td><td class="amt">$30</td></tr>
-        <tr><td>A8</td><td>Custom product photography session</td><td>8+</td><td class="amt">$350+</td></tr>
-        <tr><td>A9</td><td>Logo &amp; identity design</td><td>10+</td><td class="amt">$430+</td></tr>
-      </tbody>
-    </table>
+    <div class="row total"><span>Total</span><span>$2,800 AUD</span></div>
   </div>
 
   <!-- TERMS -->
   <h2>Terms &amp; Conditions</h2>
   <div class="terms">
     <ul>
-      <li><strong>Payment schedule:</strong> 50% deposit on acceptance, 50% on final delivery.</li>
+      <li><strong>Payment schedule:</strong> 50% on acceptance, 50% on final delivery (site is already delivered &amp; live).</li>
       <li><strong>Currency:</strong> All amounts quoted in AUD.</li>
-      <li><strong>Revisions:</strong> Two rounds of revisions included per deliverable; further changes quoted separately.</li>
-      <li><strong>Timeline:</strong> Estimated 2 – 3 weeks from project kick-off, subject to feedback turnaround.</li>
-      <li><strong>Exclusions:</strong> Domain, hosting fees, paid photography or stock licensing, ongoing maintenance.</li>
-      <li><strong>Ownership:</strong> Source files transferred on final payment. Designer retains right to display work in portfolio.</li>
+      <li><strong>Revisions:</strong> Two rounds of revisions included per deliverable; further changes quoted separately at $35 / hour.</li>
+      <li><strong>Timeline:</strong> Work complete. Repository published to GitHub; live on Vercel.</li>
+      <li><strong>Exclusions:</strong> Domain &amp; DNS, ongoing hosting fees (Vercel free tier currently covers usage), paid stock photography or licensing, future feature additions.</li>
+      <li><strong>Ownership:</strong> Source files &amp; GitHub repository transferred on final payment. Designer retains right to display work in portfolio.</li>
       <li><strong>Validity:</strong> This quotation is valid for 30 days from the date of issue.</li>
     </ul>
   </div>
@@ -430,7 +592,7 @@
   </div>
 
   <div class="foot">
-    Thank you for the opportunity &middot; Quotation Q-2026-002 &middot; Sakxham Studio &middot; sameer1punk@gmail.com
+    Thank you for the opportunity &middot; Quotation Q-2026-002 &middot; Rancorous Studio &middot; sameer1punk@gmail.com
   </div>
 
 </div>
