@@ -75,7 +75,7 @@ _legacy_html/               Original hand-written static HTML (safe to delete)
 - `/` — home
 - `/craft`, `/selection`, `/dry-aging`, `/wholesale`, `/visit`
 - `/products/<slug>` — one per item in `lib/products.js`
-- `/selection?cat=beef` (or `pork`, `lamb`, `poultry`, `seafood`, `charcuterie`) — pre-filters the catalog
+- `/selection?cat=beef` (or `pork`, `lamb`, `poultry`, `charcuterie`) — pre-filters the catalog
 - `/quotation.html` — static quotation document
 
 ## Editing content

@@ -22,7 +22,6 @@ export default function Footer() {
               <li><Link href="/selection?cat=pork">Pork</Link></li>
               <li><Link href="/selection?cat=lamb">Lamb</Link></li>
               <li><Link href="/selection?cat=poultry">Poultry</Link></li>
-              <li><Link href="/selection?cat=seafood">Seafood</Link></li>
               <li><Link href="/selection?cat=charcuterie">Charcuterie</Link></li>
             </ul>
           </div>
@@ -41,7 +40,7 @@ export default function Footer() {
               <li><Link href="/products/iberico-bellota">Iberico Bellota</Link></li>
               <li><Link href="/products/spring-lamb">Spring Lamb</Link></li>
               <li><Link href="/products/the-board">The Board</Link></li>
-              <li><Link href="/products/fresh-oysters">Fresh Oysters</Link></li>
+              <li><Link href="/products/duck-breast">Duck Breast</Link></li>
             </ul>
           </div>
         </div>
